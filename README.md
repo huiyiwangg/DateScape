@@ -41,11 +41,11 @@ Finding great date spots can be challenging, especially in a city as large and d
 Google Maps API: For fetching and displaying map locations of date spots.
 
 ### 🏙️️Sitemap
-Home Page: Browse featured date spots, search and filter options, and access to the map view.
-Date Spot List Page: Displays all date spots in a list with details.
-Date Spot Detail Page: View detailed information about a specific spot, including reviews and ratings.
-Add/Edit Date Spot Page: A form for users to submit new date spots or edit existing ones.
-Map Page: A map showing the locations of all date spots.
+- Home Page: Browse featured date spots, search and filter options, and access to the map view.
+- Date Spot List Page: Displays all date spots in a list with details.
+- Date Spot Detail Page: View detailed information about a specific spot, including reviews and ratings.
+- Add/Edit Date Spot Page: A form for users to submit new date spots or edit existing ones.
+- Map Page: A map showing the locations of all date spots.
 
 ### 🎨Mockups
 Home Page: Displays a list of date spots with a search bar and filter options.
