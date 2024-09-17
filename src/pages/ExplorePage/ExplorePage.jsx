@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-const apikey = import.meta.env.REACT_APP_openAI_API_KEY;
-// const apikey = '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'
+// const apikey = process.env.REACT_APP_OPENAI_API_KEY;
 
 const ExplorePage = () => {
   const [location, setLocation] = useState("");
@@ -17,7 +16,7 @@ const ExplorePage = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": Bearer +`${apikey}`
+          "Authorization": "Bearer " + apikey
         },
         body: JSON.stringify({
           model: "gpt-4o",
