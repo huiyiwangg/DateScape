@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const apikey = process.env.REACT_APP_OPENAI_API_KEY;
+// const apikey = process.env.REACT_APP_OPENAI_API_KEY;
 
 const ExplorePage = () => {
   const [location, setLocation] = useState("");
@@ -54,7 +54,7 @@ const ExplorePage = () => {
       const resultArray = data.choices[0].message.content
       .split(/\n?\d\.\s+/)
       .filter(Boolean)
-      .map(item => item.trim()); // Ensure that items are trimmed of extra spaces or newlines
+      .map(item => item.trim());
       setResultArray(resultArray);
     } catch (err) {
       console.error("Failed to fetch result:", err);
