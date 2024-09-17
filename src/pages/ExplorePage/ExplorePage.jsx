@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-const apikey = 'sk-O5nSKyb8-mbJCAW7-WjyTYXHJpWqMaxbMtePwf4-xLT3BlbkFJ9dyaxObjwTPzyLd5Tq5e7x1AgejhmVvFCcLoXQfZYA'
 console.log(apikey);
 
 const ExplorePage = () => {
