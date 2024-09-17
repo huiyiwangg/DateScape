@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-console.log(apikey);
+const apikey = process.env.REACT_APP_OPENAI_API_KEY;
 
 const ExplorePage = () => {
   const [location, setLocation] = useState("");
