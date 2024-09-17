@@ -77,8 +77,20 @@ button{
     width: 100%;
     border-radius: 0.25rem;
     margin-bottom: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    background-color: $main-pink;
+    color: white;
+    border: none;
+    border-radius: 0.3125rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $dark-pink;
+    }
     @include tablet{
-        width: 9.375rem;
+        width: 100%;
         padding: 0 2rem;
     }
 
@@ -142,3 +154,13 @@ input, textarea{
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+textarea{
+    width: 100%;
+}
+
+.logo{
+    width: 3rem;
+    height: 3rem;
+}
+
