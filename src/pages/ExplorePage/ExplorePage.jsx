@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import love from '../../assets/gif/snoopylove.gif'
 const apikey = import.meta.env.VITE_openAI_API_KEY;
 import Card from "../../components/card";
 
@@ -95,6 +96,9 @@ const ExplorePage = () => {
     <section className="explorepage container">
       <div className="explorepage__input">
         <h1>Find your perfect DateScope 💘</h1>
+        <div className='homepage__gif'>
+          <img src={love} alt="snoopy love"/>
+        </div>
         <h3>Location</h3>
         <textarea
           placeholder="Please fill in the city you are located"

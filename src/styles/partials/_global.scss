@@ -154,15 +154,15 @@ input, textarea{
 textarea{
     width: 100%;
     height: 1rem;
-
-    @include tablet{
-        display: flex;
-        width: auto;
-    }
 }
 
 .logo{
     width: 3rem;
     height: 3rem;
+}
+
+img{
+    width: 15rem;
+    height: auto;
 }
 
