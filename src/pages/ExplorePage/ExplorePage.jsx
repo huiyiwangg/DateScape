@@ -32,8 +32,8 @@ const ExplorePage = () => {
                 content: `Location: ${location}. Interests: ${interest}.`,
               },
             ],
-            temperature: 0.5,  // Lower temperature for more accurate responses
-            max_tokens: 300,   // Increase tokens for detailed responses
+            temperature: 0.5, 
+            max_tokens: 300, 
             top_p: 1,
           }),
         }
@@ -55,7 +55,6 @@ const ExplorePage = () => {
       const data = await response.json();
       let resultContent = data.choices[0].message.content;
 
-      // Fix JSON if incomplete
       if (data.choices[0].finish_reason === "length") {
         console.log("Incomplete JSON detected, trying to fix...");
         resultContent = attemptToFixJSON(resultContent);
@@ -64,7 +63,6 @@ const ExplorePage = () => {
       try {
         const resultArray = JSON.parse(resultContent);
         console.log(resultArray)
-        // Ensure exactly 3 spots
         setResultArray(resultArray.slice(0, 3));
       } catch (jsonErr) {
         console.error("JSON parse error: ", jsonErr);
@@ -77,23 +75,17 @@ const ExplorePage = () => {
     }
   }
 
-  // Function to attempt to fix incomplete JSON
   function attemptToFixJSON(jsonString) {
-    // Trim whitespace or non-visible characters
     jsonString = jsonString.trim();
 
-    // Ensure the JSON starts and ends properly
     if (!jsonString.endsWith("]")) {
-      // Append closing brackets if they're missing
       jsonString += "]";
     }
 
     if (!jsonString.startsWith("[")) {
-      // Ensure the JSON starts with an array bracket
       jsonString = "[" + jsonString;
     }
 
-    // Remove any trailing commas or incomplete data
     jsonString = jsonString.replace(/,\s*(\]|\})/g, "$1");
 
     return jsonString;
@@ -102,7 +94,7 @@ const ExplorePage = () => {
   return (
     <section className="explorepage container">
       <div className="explorepage__input">
-        <h1>Welcome to DateScope's Explore Page 💘</h1>
+        <h1>Find your perfect DateScope 💘</h1>
         <h3>Location</h3>
         <textarea
           placeholder="Please fill in the city you are located"
@@ -114,7 +106,7 @@ const ExplorePage = () => {
           onChange={(e) => setInterest(e.target.value)}
         />
         <div className="explorepage__action">
-          <button onClick={callOpenAIAPI}>Find your perfect DateScope</button>
+          <button onClick={callOpenAIAPI}> Generate Date Ideas</button>
         </div>
         <div className="explorepage__result">
           {error && <p className="error">{error}</p>}
