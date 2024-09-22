@@ -1,14 +1,28 @@
 import React, { useState } from "react";
-import love from '../../assets/gif/snoopylove.gif'
+import love from "../../assets/gif/snoopylove.gif";
 const apikey = import.meta.env.VITE_openAI_API_KEY;
 import Card from "../../components/Card/card";
-import './ExplorePage.scss'
+import hobbies from '../../data/hobbies';
+import "./ExplorePage.scss";
 
 const ExplorePage = () => {
   const [location, setLocation] = useState("");
+  const [selectedHobbies, setSelectedHobbies] = useState([]);
   const [interest, setInterest] = useState("");
   const [resultArray, setResultArray] = useState([]);
   const [error, setError] = useState("");
+
+  const handleHobbySelect = (selectedHobby) => {
+    setSelectedHobbies((prevHobbies) => {
+      if (prevHobbies.includes(selectedHobby)) {
+        return prevHobbies.filter((hobby) => hobby !== selectedHobby);
+      } else if (prevHobbies.length < 2) {
+        return [...prevHobbies, selectedHobby];
+      }
+      return prevHobbies;
+    });
+  };
+
 
   async function callOpenAIAPI(retryCount = 0) {
     console.log("Calling the OpenAI API");
@@ -27,15 +41,15 @@ const ExplorePage = () => {
               {
                 role: "system",
                 content:
-                  "You are a dating expert. Provide a list of exactly 3 popular and real date spots related to the interest provided by the user. The response should be a valid JSON array of objects, each containing 'name', 'address','description',  'latitude', and 'longitude'. Ensure that each date spot is a popular and real location.",
+                  "You are a dating expert. Provide a list of exactly 3 popular and real date spots related to the interest provided by the user. The response should be a valid JSON array of objects, each containing 'name', 'address','description',  'latitude', and 'longitude'. Ensure that each date spot is a popular and real location. Try to combine the user input location, selected hobbies and interests.",
               },
               {
                 role: "user",
-                content: `Location: ${location}. Interests: ${interest}.`,
+                content: `Location: ${location}. Interests: ${interest}. Hobbies:${selectedHobbies}`,
               },
             ],
-            temperature: 0.5, 
-            max_tokens: 300, 
+            temperature: 0.5,
+            max_tokens: 300,
             top_p: 1,
           }),
         }
@@ -64,13 +78,12 @@ const ExplorePage = () => {
 
       try {
         const resultArray = JSON.parse(resultContent);
-        console.log(resultArray)
+        console.log(resultArray);
         setResultArray(resultArray.slice(0, 3));
       } catch (jsonErr) {
         console.error("JSON parse error: ", jsonErr);
         setError("Failed to parse the result from the API.");
       }
-
     } catch (err) {
       console.error("Failed to fetch result:", err);
       setError("An error occurred while fetching the result.");
@@ -95,41 +108,58 @@ const ExplorePage = () => {
 
   return (
     <section className="explorepage container">
+      <h1 className="explorepage__header">Find your perfect DateScape 💘</h1>
+      <div className="explorepage__gif">
+        <img src={love} alt="snoopy love" />
+
+      </div>
       <div className="explorepage__input">
-        <h1 className="explorepage__header">Find your perfect DateScape 💘</h1>
-        <div className='homepage__gif'>
-          <img src={love} alt="snoopy love"/>
-        </div>
         <h3 className="explorepage__subtitle">Location</h3>
         <textarea
-          placeholder="Please fill in the city you are located"
+          placeholder="Please provide your location, with as much detail as you prefer."
           onChange={(e) => setLocation(e.target.value)}
         />
-        <h3 className="explorepage__subtitle">Interests</h3>
+        <h3 className="explorepage__subtitle">Select 2 Hobbies</h3>
+        <div className="explorepage__hobbies">
+          {hobbies.map((hobby, index) => (
+            <button
+            key={index}
+            className={`hobby-pill ${selectedHobbies.includes(hobby) ? 'selected' : ''}`}
+            onClick={() => handleHobbySelect(hobby)}
+            onDoubleClick={() => handleHobbySelect(hobby)}
+            >
+              {hobby}
+            </button>
+          ))}
+        </div>
+        <h3 className="explorepage__subtitle">Special Request</h3>
         <textarea
-          placeholder="Fill in your interests (e.g., outdoor, farm, clubbing, etc.)"
+          placeholder="Please fill in your specific interests (e.g., chocolate, cats, etc.)"
           onChange={(e) => setInterest(e.target.value)}
         />
-        <div className="explorepage__action">
-          <button onClick={callOpenAIAPI}> Generate Date Ideas</button>
-        </div>
-        <div className="explorepage__result">
-          {error && <p className="error">{error}</p>}
-          <ul>
-            {resultArray.map((item, index) => (
-              <li key={index}>
-                <Card
-                  name={item.name}
-                  address={item.address}
-                  description={item.description}
-                  latitude={item.latitude}
-                  longitude={item.longitude}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="explorepage__action">
+        <button onClick={callOpenAIAPI}> Generate Date Ideas</button>
       </div>
+      </div>
+
+      
+      <div className="explorepage__result">
+        {error && <p className="error">{error}</p>}
+        <ul className="explorepage__list">
+          {resultArray.map((item, index) => (
+            <li key={index}>
+              <Card
+                name={item.name}
+                address={item.address}
+                description={item.description}
+                latitude={item.latitude}
+                longitude={item.longitude}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+      
     </section>
   );
 };

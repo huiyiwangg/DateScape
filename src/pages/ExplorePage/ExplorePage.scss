@@ -16,12 +16,71 @@
     padding: 1rem;
   }
 
+  &__gif{
+    margin: 0;
+  }
+
   &__subtitle{
     color: $main-pink;
     font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  &__input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    
+  }
+
+  &__action{
+    width: 100%;
+  }
+
+  &__hobbies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+
+    @include desktop{
+      flex-direction: row;
+      gap: 2rem;
+    }
   }
 }
 
 li {
   list-style: none;
+}
+
+.hobby-pill {
+  padding:0.25rem 0.75rem; 
+  font-size: 0.75rem; 
+  background-color: $light-pink;
+  border: none;
+  margin: 0;
+  border-radius: 5px; 
+  cursor: pointer;  
+  color: $dark-grey;
+  transition: background-color 0.3s;
+  width: auto;
+
+  &:hover {
+    background-color: $main-pink;
+  }
+
+  &.selected {
+    background-color: darken($light-pink, 10%); // Change this to your desired color
+    color: white;
+}
 }
