@@ -8,6 +8,33 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  main {
+    flex-grow: 1;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+
 body{
     font-family: 'Lato', sans-serif;
     font-size: 0.8125rem;
@@ -19,7 +46,6 @@ body{
         }
 }
 
-// Page Header
 h1{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -32,7 +58,6 @@ h1{
         }
 }
 
-// Section Header
 h2{
     font-size: 0.75rem;
     line-height: 1.25rem;
@@ -43,7 +68,6 @@ h2{
         }
 }
 
-// Subheader
 h3{
     font-size: 0.8125rem;
     line-height: 1rem;
@@ -157,8 +181,8 @@ textarea{
 }
 
 .logo{
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 img{

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import love from '../../assets/gif/snoopylove.gif'
 const apikey = import.meta.env.VITE_openAI_API_KEY;
-import Card from "../../components/card";
+import Card from "../../components/Card/card";
+import './ExplorePage.scss'
 
 const ExplorePage = () => {
   const [location, setLocation] = useState("");
@@ -95,16 +96,16 @@ const ExplorePage = () => {
   return (
     <section className="explorepage container">
       <div className="explorepage__input">
-        <h1>Find your perfect DateScope 💘</h1>
+        <h1 className="explorepage__header">Find your perfect DateScape 💘</h1>
         <div className='homepage__gif'>
           <img src={love} alt="snoopy love"/>
         </div>
-        <h3>Location</h3>
+        <h3 className="explorepage__subtitle">Location</h3>
         <textarea
           placeholder="Please fill in the city you are located"
           onChange={(e) => setLocation(e.target.value)}
         />
-        <h3>Interests</h3>
+        <h3 className="explorepage__subtitle">Interests</h3>
         <textarea
           placeholder="Fill in your interests (e.g., outdoor, farm, clubbing, etc.)"
           onChange={(e) => setInterest(e.target.value)}
