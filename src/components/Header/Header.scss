@@ -1,0 +1,49 @@
+@use '../../styles/partials/global' as *;
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $main-pink;
+    padding: 1rem;
+    gap: 1rem;
+    height: 5rem;
+
+    &__logo{
+        display: flex;
+        flex-direction: column;
+
+        &-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+
+    &__text{
+        padding: 0;
+        color: $primary-bg;
+        margin-bottom: 0.25rem;
+    }
+
+    &__links{
+        display: flex;
+        flex-direction: row;
+        text-decoration: none; 
+        gap: 1rem;
+    }
+
+    &__link{
+        color: #FFFFFF;
+        text-decoration: none;
+        width: 3rem;
+        font-size: 1rem;
+
+        &:hover{
+            color: $main-grey;
+        }
+    }
+}
