@@ -11,47 +11,38 @@ Finding great date spots can be challenging, especially in a city as large and d
 ### 👥Target User Profile
 - Couples: Looking to plan a date that suits their style—whether casual, romantic, or adventurous. 
 - Singles: Seeking unique places to impress on a first date.
--  Visitors/Newcomers: Wanting to explore Toronto’s best spots for a memorable outing
+- Visitors/Newcomers: Wanting to explore Toronto’s best spots for a memorable outing
 
->✨Users will browse, search, and filter date spots based on type, rating, and location.They can submit their favorite spots, leave reviews, and update information about existing spots.The app must account for mobile accessibility, as users may want to look up spots while on the go. ✨
+>✨Users will discover various locations with an interactive map interface. Each location is presented in a card format, showcasing essential details such as the name, address, and description, along with a custom pin on the map to highlight its position. After choosing their favorite location card, users can choose a favorite spots and send a personalized note to their date✨
 
 ### Features
 1. 💡 Browse Date Spots: Users can view a list of recommended date spots with details such as location, type, and rating.
 2. 🔍 Filter and Search: Users can filter spots by activity type (e.g., café, park, outdoor) and search by name or neighborhood.
-3. ➕ Add/Update/Delete a Date Spot: Users can edit their own date spot recommendations by filling in details like name, description, and location.
-4. 🗺️ Map Integration: A map to visually display the locations of date spots, helping users find nearby options.
-5. ⭐User Ratings/Reviews: Users can rate and review date spots, contributing to the community-driven recommendations.
-6. ❤️ Favorite Spots: Users can mark spots as favorites for quick access.
-
+3. 🗺️ Map Integration: A map to visually display the locations of date spots, helping users find nearby options.
+4. ❤️ Favorite Spots: Users can choose a favorite spots and send a personalized note to their date.
 
 ## Implementation
 ### Tech Stack
 - Frontend: React, HTML, CSS, SASS (for styling)
-- Backend: Express.js
-- Database: MongoDB or Firebase (for storing date spots and user data)
-- API Integration: Google Maps API (for displaying date spot locations)
+- MapLibre GL: For rendering the interactive map and handling geospatial data.
+- API Integration: Open AI API (for displaying date spot locations)
 
 ### Libraries/Tools:
 - Axios for making HTTP requests
 - React Router for managing page navigation
-- Google Maps API for map integration
-- MongoDB/Firebase for storing and retrieving dynamic data
 
 ### APIs
-Google Maps API: For fetching and displaying map locations of date spots.
+Open AI API: For fetching and displaying map locations of date spots.
 
 ### 🏙️️Sitemap
-- Home Page: Browse featured date spots, search and filter options, and access to the map view.
-- Date Spot List Page: Displays all date spots in a list with details.
-- Date Spot Detail Page: View detailed information about a specific spot, including reviews and ratings.
-- Add/Edit Date Spot Page: A form for users to submit new date spots or edit existing ones.
-- Map Page: A map showing the locations of all date spots.
+- Home Page: Welcome users
+- About Page: Learn more about the application and its purpose
+- Explore Page: Browse featured date spots, search and filter options, and access to the map view.
 
-### 🎨Mockups
-Home Page: Displays a list of date spots with a search bar and filter options.
-Detail Page: Shows a single spot's details, reviews, and rating.
-Form Page: Includes fields for submitting or editing date spots.
-Map Page: Embedded map with location pins of date spots
+### 🎨Snoopy-theme Mockups
+- Home Page: Welcome users with simple interactions and link to explore page.
+- About Page: Information about the application and its purpose.
+- Explore Page:  Includes fields for submitting or editing date spots.  Displays a list of date spots with a search bar and filter options. Embedded map with location pins of date spots. Shows a single spot's details, reviews, and rating.
 
 ### Data
 
@@ -59,31 +50,9 @@ Map Page: Embedded map with location pins of date spots
 | ------ | ------ |
 | Name | string |
 | Location | string or coordinates |
-| Rating | number |
-| Type | café, park, etc |
-| Category | Outdoor active, indoor, artisy, etc |
-| Reviews | array of comments/ratings|
+| Hobby | Outdoor active, indoor, artisy, etc |
+| Interest | additional user request: budget, allegry etc |
 | SubmittedBy | user info |
-
-| Date Spot Data | Type |
-| ------ | ------ |
-| UserName | [string |
-| Email | string |
-| FavoriteSpots | array of spot IDs |
-
-### Endpoints
-- GET /spots: Fetch all date spots
-Response: Array of spots
-- GET /spots/:id Fetch a specific date spot by ID
-Response: Spot details
-- POST /spots Create a new date spot
-Body Parameters: Name, description, location, rating, type
-Response: Created spot
-- PUT /spots/ Update an existing date spot
-Body Parameters: Updated fields (name, description, etc.)
-Response: Updated spot
-- DELETE /spots/ Delete a specific date spot
-Response: Confirmation message
 
 
 ## Roadmap
