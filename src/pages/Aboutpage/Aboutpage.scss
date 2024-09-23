@@ -1,0 +1,50 @@
+@use '../../styles/partials/global' as *;
+
+.aboutpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+
+  @include tablet{
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: 2rem;
+    flex-direction: column;
+  }
+
+  &__image{
+    width: 5rem;
+    margin: 1rem;
+
+    @include tablet{
+      width: 8rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    color: $main-pink;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    color: $main-pink;
+  }
+
+  &__steps{
+    list-style-type: decimal;
+  }
+
+  &__text {
+    font-size: 1rem;
+    color: black;
+    line-height: 1.5rem;
+    padding: 0.5rem 0;
+  }
+}

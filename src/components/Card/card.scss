@@ -1,0 +1,47 @@
+@use '../../styles/partials/global' as *;
+
+.card {
+    background-color: white;
+    border: 1px solid $light-pink;
+    list-style: none;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    
+    &__title{
+      font-size: 1.25rem;
+      padding: 1rem 0;
+    }
+
+    &__address{
+      padding: 0.5rem 0;
+    }
+
+    @include tablet{
+      width: 25rem;
+      height: 25rem;
+    }
+
+    @include desktop{
+      width: 25rem;
+      height: 25rem;
+    }
+    
+    &__share{
+      margin: 1rem 0;
+    }
+  }
+
+.map-container {
+  width: 100%;
+  height: 10rem;
+
+  @include tablet{
+    height: 15rem;
+  }
+}

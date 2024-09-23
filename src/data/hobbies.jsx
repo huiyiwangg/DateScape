@@ -1,0 +1,32 @@
+const hobbies = [
+    "Art",
+    "Music",
+    "Food",
+    "Outdoors",
+    "Theater",
+    "Sports",
+    "Movies",
+    "Books",
+    "Fitness",
+    "Cooking",
+    "Wine",
+    "Coffee",
+    "History",
+    "Technology",
+    "Fashion",
+    "Photography",
+    "Gaming",
+    "Dancing",
+    "Yoga",
+    "Crafts",
+    "Comedy",
+    "Adventure",
+    "Cycling",
+    "Volunteering",
+    "Meditation",
+    "Shopping",
+    "Animals",
+  ];
+  
+  export default hobbies;
+  
