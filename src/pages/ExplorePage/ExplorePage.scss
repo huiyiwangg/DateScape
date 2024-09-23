@@ -66,7 +66,7 @@ li {
 .hobby-pill {
   padding:0.25rem 0.75rem; 
   font-size: 0.75rem; 
-  background-color: $light-pink;
+  background-color: $light-grey;
   border: none;
   margin: 0;
   border-radius: 5px; 
@@ -76,11 +76,11 @@ li {
   width: auto;
 
   &:hover {
-    background-color: $main-pink;
+    background-color: $light-pink;
   }
 
   &.selected {
-    background-color: darken($light-pink, 10%); // Change this to your desired color
+    background-color: $main-pink; // Change this to your desired color
     color: white;
 }
 }

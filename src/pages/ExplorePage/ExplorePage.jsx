@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import love from "../../assets/gif/snoopylove.gif";
+import loadgif from "../../assets/gif/loading.gif";
 const apikey = import.meta.env.VITE_openAI_API_KEY;
 import Card from "../../components/Card/card";
 import hobbies from '../../data/hobbies';
@@ -11,6 +12,7 @@ const ExplorePage = () => {
   const [interest, setInterest] = useState("");
   const [resultArray, setResultArray] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleHobbySelect = (selectedHobby) => {
     setSelectedHobbies((prevHobbies) => {
@@ -24,8 +26,9 @@ const ExplorePage = () => {
   };
 
 
+
   async function callOpenAIAPI(retryCount = 0) {
-    console.log("Calling the OpenAI API");
+    setLoading(true);
     try {
       const response = await fetch(
         "https://api.openai.com/v1/chat/completions",
@@ -78,7 +81,7 @@ const ExplorePage = () => {
 
       try {
         const resultArray = JSON.parse(resultContent);
-        console.log(resultArray);
+        setLoading(false)
         setResultArray(resultArray.slice(0, 3));
       } catch (jsonErr) {
         console.error("JSON parse error: ", jsonErr);
@@ -105,6 +108,7 @@ const ExplorePage = () => {
 
     return jsonString;
   }
+
 
   return (
     <section className="explorepage container">
@@ -134,7 +138,7 @@ const ExplorePage = () => {
         </div>
         <h3 className="explorepage__subtitle">Special Request</h3>
         <textarea
-          placeholder="Please fill in your specific interests (e.g., chocolate, cats, etc.)"
+          placeholder="Please fill in your specific interests (e.g., chocolate, cats, your budget, etc.)"
           onChange={(e) => setInterest(e.target.value)}
         />
       <div className="explorepage__action">
@@ -142,9 +146,8 @@ const ExplorePage = () => {
       </div>
       </div>
 
-      
       <div className="explorepage__result">
-        {error && <p className="error">{error}</p>}
+        {!loading ? 
         <ul className="explorepage__list">
           {resultArray.map((item, index) => (
             <li key={index}>
@@ -158,6 +161,10 @@ const ExplorePage = () => {
             </li>
           ))}
         </ul>
+        
+        : <img src={loadgif} alt="loading" />}
+        
+        
       </div>
       
     </section>
